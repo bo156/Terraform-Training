@@ -1,5 +1,5 @@
-module "vpc" {
-  source = "../vpc"
+variable "vpc_id" {
+  type = string
 }
 
 variable "ports" {
@@ -9,7 +9,7 @@ variable "ports" {
 
 resource "aws_security_group" "BarakSecurityGroup" {
   name = "BarakSecurityGroup"
-  vpc_id = module.vpc.vpc_id
+  vpc_id = var.vpc_id
 
   dynamic "ingress" {
     iterator = port
@@ -32,4 +32,8 @@ resource "aws_security_group" "BarakSecurityGroup" {
       cidr_blocks = ["0.0.0.0/0"]
     }
   }
+}
+
+output "security_group_id" {
+  value = aws_security_group.BarakSecurityGroup.id
 }

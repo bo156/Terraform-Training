@@ -146,3 +146,16 @@ resource "aws_iam_role_policy_attachment" "BarakCustomPolicyAndRoleAttachment" {
   policy_arn = aws_iam_policy.BarakPolicy.arn
   role       = aws_iam_role.BarakIAM.name
 }
+
+resource "aws_iam_instance_profile" "BarakProfile" {
+  name = "barak_profile"
+  role = aws_iam_role.BarakIAM.name
+}
+
+output "barak_iam_profile_name" {
+  value = aws_iam_instance_profile.BarakProfile.name
+}
+
+output "barak_role" {
+  value = aws_iam_role.BarakIAM.name
+}

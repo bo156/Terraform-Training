@@ -1,10 +1,14 @@
-module "vpc" {
-    source = "../vpc"
+variable "subnet_id" {
+  type = string
+}
+
+variable "az_subnet_id" {
+  type = string
 }
 
 resource "aws_db_subnet_group" "BarakDBSubnet" {
   name       = "barak_db_subnet_group"
-  subnet_ids = [module.vpc.subnet_id, module.vpc.az_subnet_id]
+  subnet_ids = [var.subnet_id, var.az_subnet_id]
 
   tags = {
     Name = "My DB subnet group"
