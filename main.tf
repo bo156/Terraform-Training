@@ -15,6 +15,10 @@ module "s3" {
   source = "./resources/s3"
 }
 
+module "rds" {
+  source = "./resources/rds"
+}
+
 output "s3_website" {
   value = module.s3.website_endpoint
 }
