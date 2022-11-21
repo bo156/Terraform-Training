@@ -6,3 +6,7 @@ provider "aws" {
 module "security_group" {
   source = "./resources/security_group"
 }
+
+module "iam" {
+  source = "./resources/iam"
+}
