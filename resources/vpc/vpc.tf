@@ -1,3 +1,8 @@
+#variable "vpc_id" {
+#  type = string
+#  id = aws_vpc.BarakVPC.id
+#}
+
 resource "aws_vpc" "BarakVPC" {
   cidr_block = "10.10.0.0/16"
   tags = {
@@ -11,4 +16,8 @@ resource "aws_subnet" "BarakSubnet" {
   tags = {
     Name = "BarakSubnet"
   }
+}
+
+output "vpc_id" {
+  value = aws_vpc.BarakVPC.id
 }

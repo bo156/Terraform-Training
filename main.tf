@@ -3,7 +3,6 @@ provider "aws" {
   profile = "dev2"
 }
 
-module "vpc" {
-  source = "./resources/vpc"
+module "security_group" {
+  source = "./resources/security_group"
 }
-
