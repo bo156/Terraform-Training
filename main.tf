@@ -10,3 +10,11 @@ module "security_group" {
 module "iam" {
   source = "./resources/iam"
 }
+
+module "s3" {
+  source = "./resources/s3"
+}
+
+output "s3_website" {
+  value = module.s3.website_endpoint
+}
